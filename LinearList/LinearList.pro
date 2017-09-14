@@ -3,7 +3,7 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = SumQuestion
+TARGET = LinearList
 CONFIG += console
 CONFIG -= app_bundle
 

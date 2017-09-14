@@ -1,29 +1,7 @@
 #include <QCoreApplication>
+#include "solutions.h"
+#include <iostream>
 
-using namespace std;
-
-//(Brute Force)暴力算法 复杂度O(n*n)
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target)
-    {
-        vector<int> twoSum;
-        auto solutionNum=0;
-        for(size_t i=0;i<nums.size();i++)
-        {
-            for(size_t j=i;j<nums.size();j++)
-            {
-                if(nums[i]+nums[j]==target)
-                {
-                    twoSum.push_back(i);
-                    twoSum.push_back(j);
-                    solutionNum++;
-                }
-            }
-        }
-        return twoSum;
-    }
-};
 
 
 
@@ -32,15 +10,22 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    vector<int> test;
-    test.push_back(3);
-    test.push_back(2);
-    test.push_back(4);
+    vector<int> test{1,5,3};
     auto target=6;
 
     Solution solutionTest;
 
-    solutionTest.twoSum(test,target);
+    //随意输入的vector
+    for(auto kvp:solutionTest.twoSum(test,target))
+    {
+        //cout<<kvp<<endl;
+    }
+    for(auto kvp:solutionTest.twoSumHash(test,target))
+    {
+        cout<<kvp<<endl;
+    }
+
+
 
     return a.exec();
 }
