@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//(Brute Force)暴力算法 复杂度O(n*n)
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target)
