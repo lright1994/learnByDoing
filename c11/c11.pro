@@ -24,4 +24,5 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
     cbook.h \
-    global.h
+    global.h \
+    template.h

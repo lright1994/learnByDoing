@@ -3,4 +3,6 @@ TEMPLATE = subdirs
 SUBDIRS += \
     c11 \
     SumQuestion \
-    LinearList
+    LinearList \
+    qtLearn \
+    QtPrimer

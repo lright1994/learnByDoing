@@ -1,7 +1,9 @@
 lib_x64\*
 *.user
-*\*.user
-SumQuestion\*.pro.user
+*/*.user
+SumQuestion/
+*/
+win/
 
 !*.pro
 !*\*.cpp

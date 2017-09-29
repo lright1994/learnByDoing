@@ -1,10 +1,10 @@
 #include <QCoreApplication>
 #include "solutions.h"
 #include <iostream>
+#include "football.h"
 
 
-
-
+//c++的数据读取找到一个完美的方案！！！！！！！！！！！！（用标准容器）
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     auto target=6;
 
     Solution solutionTest;
-
+/*
     //随意输入的vector
     for(auto kvp:solutionTest.twoSum(test,target))
     {
@@ -24,7 +24,9 @@ int main(int argc, char *argv[])
     {
         cout<<kvp<<endl;
     }
-
+*/
+    FootBall*foot_ball_=new FootBall;
+    foot_ball_->defineTeam();
 
 
     return a.exec();

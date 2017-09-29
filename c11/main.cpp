@@ -2,6 +2,7 @@
 
 #include "cbook.h"
 #include "global.h"
+#include "template.h"
 
 #include <string>
 
@@ -12,6 +13,13 @@ auto compose(T1 t1,T2 t2)->decltype(t1+t2)
 {
     return t1+t2;
 }
+
+template <typename T>
+bool max2(T const&a,T const&b)
+{
+    return a>b;
+}
+
 
 //测试lambda函数能否传入普通函数!!!为什么传不进去？？？
 /*
@@ -87,8 +95,66 @@ int main(int argc, char *argv[])
     std::for_each(std::begin(arr),std::end(arr),[](int n){std::cout<<n<<std::endl;});
     std::string testStr="a test";
     std::for_each(std::begin(testStr),std::end(testStr),[](char n){std::cout<<n;});
+    std::cout<<std::endl;
     //=========stl里面很多有用的，例如for_each例如find_if和lambda函数配合能大大缩减代码量
 
+    //==============================常量指针和指针常量=================================//
+    const int test_a=10;
+    const int test_b=20;
+    int test_c=30;
+
+    //惊了，这俩都是常量指针
+    const int *c_ptr_int;
+    //int const *ptr_int_c;
+
+    //const 修饰int*,说明指针指向数据不能变动
+    c_ptr_int=&test_a;
+    c_ptr_int=&test_b;
+    c_ptr_int=&test_c;
+    test_c=31;
+    //*c_ptr_int=20;    //虽然test_c不是常量，但是不能通过常量指针来赋值
+    //*c_ptr_int=25;
+    //ptr_int_c=&test_a;
+    //ptr_int_c=&test_b;
+
+    int* const ptr_int_c=&test_c;
+
+    //ptr_int_c=&test_a;    指针常量根本上是常量，不能修改指向对象
+    //ptr_int_c=&test_c;
+    *ptr_int_c=32;
+
+    //==================================模板！=======================================//
+    Template<std::string> str_stack;
+    //
+    //不知为何调用模板类中的函数会显示无法解析的外部符号
+    //->要把模板函数的定义也放在包含声明的头文件里面！！！参见C++template p59
+    //
+    //
+    str_stack.push("test template");
+    str_stack.print();
+
+    //std::cout<<max_tem(10,11);
+    //==============================================================================//
+    //
+    //
+    //std中的magic sort for_each function find_if
+    //
+    //
+    std::cout<<"A test for std function:"<<std::endl;
+    std::vector<int>    vec_int;
+    vec_int.push_back(1);
+    vec_int.push_back(3);
+    vec_int.push_back(2);
+
+
+    std::sort(vec_int.begin(),vec_int.end(),[](int a,int b){return a>b;});
+    //std::sort(vec_int.begin(),vec_int.end(),max2<int>);
+    //std::cout<<vec_int[0]<<vec_int[1]<<vec_int[2]<<std::endl;
+
+    std::for_each(vec_int.begin(),vec_int.end(),[](int a){std::cout<<a;});
+    std::cout<<std::endl;
+
+    //如何完成函数回调std::function
 
 
 
